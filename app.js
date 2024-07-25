@@ -10,16 +10,17 @@ async function weatherInfo(){
     const data = await res.json()
 
     const temp = data.current.temperature_2m
+    const tempUnit = data.current_units.temperature_2m
     const speed = data.current.wind_speed_10m
-    console.log(speed)
+    const speedUnit = data.current_units.wind_speed_10m
     const timezone = data.timezone
     const time = data.current.time
 
     const date = new Date(time)
     console.log(date.toLocaleString())
 
-    temperature.textContent = `${temp} ºC`
-    windSpeed.innerHTML = `Wind Speed: ${speed} km/h`
+    temperature.textContent = `${temp} ${tempUnit}`
+    windSpeed.innerHTML = `Wind Speed: ${speed} ${speedUnit}`
     location2.innerHTML = `${timezone}`
     update.innerHTML = `Last updated: ${date.toLocaleString()}`
 
